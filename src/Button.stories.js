@@ -1,6 +1,8 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { Button } from './Button'
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Button } from './Button';
+import { color } from '@storybook/addon-knobs/react';
+import { text, boolean } from '@storybook/addon-knobs/react';
 
 // add changed to addWithJSX
 storiesOf('Button', module)
@@ -16,8 +18,13 @@ storiesOf('Button', module)
         },
     })
     .addWithJSX('with background', () => ( 
-        <Button bg="palegoldenrod">Hello World</Button>
+        <Button bg={text('bg', 'palegoldenrod')}>Hello world2</Button>
     ))
     .addWithJSX('with background 2', () => (
-        <Button bg="green">Hello World</Button>
+        <Button bg={color('bg', 'green', 'group1')}>Hello world2</Button>
     ))
+    .addWithJSX('with Typescript', () => (
+        <Button disabled={boolean('disabled', false)}>
+            {text('text', 'Hello world')}
+        </Button>
+    ));
